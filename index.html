@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Mohamed Abdelrazek – Cybersecurity</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@500;700&family=Instrument+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#060a12;--s1:#0b1220;--s2:#121c30;--ink:#e7edf7;--mute:#8d9bb5;--line:#1b2740;--cy:#38d9ff;--gold:#e9b44c;--on:#04121a;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+html{scroll-padding-top:calc(72px + env(safe-area-inset-top,0px));scroll-behavior:smooth}
+@media (prefers-color-scheme:light){:root:not([data-theme="dark"]){--bg:#f3f6fa;--s1:#fff;--s2:#e8eef6;--ink:#0c1626;--mute:#4a5a73;--line:#cdd7e5;--cy:#0a6f8f;--gold:#8a5a00;--on:#fff}}
+:root[data-theme="light"]{--bg:#f3f6fa;--s1:#fff;--s2:#e8eef6;--ink:#0c1626;--mute:#4a5a73;--line:#cdd7e5;--cy:#0a6f8f;--gold:#8a5a00;--on:#fff}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 1rem/1.65 "Instrument Sans",system-ui,-apple-system,"Segoe UI",sans-serif}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--bg)}
+a{color:var(--cy)}
+a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible{outline:3px solid var(--cy);outline-offset:2px}
+h1,h2,h3{font-family:Sora,"Instrument Sans",system-ui,sans-serif;margin:0;line-height:1.12}
+.mono{font-family:"JetBrains Mono",ui-monospace,Menlo,Consolas,monospace}
+.nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:11;background:var(--bg);border-bottom:1px solid var(--line);display:flex;align-items:center;gap:6px;padding:10px 20px;overflow-x:auto}
+.nav b{font:700 1.1rem Sora,sans-serif;margin-right:auto;color:var(--gold);padding-right:16px}
+.nav a,.btn{font:500 .92rem "Instrument Sans",sans-serif;color:var(--ink);background:transparent;border:1px solid transparent;border-radius:3px;padding:8px 14px;text-decoration:none;cursor:pointer;white-space:nowrap;display:inline-block;line-height:1.2}
+.nav a:hover,.nav button:hover{border-color:var(--line)}
+.nav button{font:500 .92rem "Instrument Sans",sans-serif;color:var(--mute);background:none;border:1px solid var(--line);border-radius:3px;padding:8px 14px;cursor:pointer}
+.btn{background:var(--s2);border-color:var(--line)}
+.btn:hover{border-color:var(--cy)}
+.btn.p{background:var(--cy);color:var(--on);border-color:var(--cy);font-weight:600}
+.btn.p:hover{filter:brightness(1.1)}
+.wrap{max-width:1120px;margin:0 auto;padding:0 24px}
+.hero{position:relative;padding:72px 0 64px}
+.hero::before{content:"";position:absolute;inset:0 -9999px;background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);background-size:56px 56px;opacity:.45;-webkit-mask-image:linear-gradient(#000 20%,transparent 95%);mask-image:linear-gradient(#000 20%,transparent 95%);pointer-events:none}
+.hero .wrap{position:relative;display:grid;grid-template-columns:1.05fr 1fr;gap:48px;align-items:center}
+h1{font-size:clamp(2.3rem,5.6vw,3.9rem);font-weight:700;letter-spacing:-.02em}
+.sub{color:var(--mute);font-size:1.12rem;max-width:46ch;margin:18px 0 26px}
+.row{display:flex;flex-wrap:wrap;gap:10px}
+.gold{height:2px;width:56px;background:var(--gold);margin-bottom:22px}
+.panel{padding:1px;background:var(--line);clip-path:polygon(0 0,calc(100% - 18px) 0,100% 18px,100% 100%,18px 100%,0 calc(100% - 18px))}
+.panel>div{background:var(--s1);clip-path:inherit;padding:18px}
+.term{font-size:.86rem;line-height:1.55;min-height:320px}
+.term .bar{color:var(--mute);margin-bottom:10px}
+#out{height:236px;overflow-y:auto;white-space:pre-wrap;word-break:break-word}
+#out .c{color:var(--gold)}#out .k{color:var(--cy)}
+#tf{display:flex;gap:8px;margin-top:8px;border-top:1px solid var(--line);padding-top:10px}
+#ti{flex:1;background:none;border:0;color:var(--ink);font:inherit;min-width:0}
+#ti:focus-visible{outline:none}
+#tf:focus-within{border-top-color:var(--cy)}
+section{padding:64px 0;border-top:1px solid var(--line)}
+h2{font-size:clamp(1.6rem,3.2vw,2.1rem);margin-bottom:10px}
+.lead{color:var(--mute);max-width:60ch;margin:0 0 28px}
+.flt{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:22px}
+.flt button,.tabs button{font:500 .9rem "Instrument Sans",sans-serif;color:var(--mute);background:none;border:1px solid var(--line);border-radius:3px;padding:7px 14px;cursor:pointer}
+.flt button[aria-pressed=true],.tabs button[aria-selected=true]{color:var(--on);background:var(--cy);border-color:var(--cy);font-weight:600}
+.proj{display:grid;grid-template-columns:260px 1fr auto;gap:12px 32px;padding:22px 0;border-top:1px solid var(--line);align-items:start}
+.proj[hidden]{display:none}
+.proj h3{font-size:1.15rem}
+.stack{color:var(--mute);font-size:.82rem;margin:6px 0 0}
+.proj ul{margin:0;padding-left:1.1rem}.proj li{margin:2px 0}
+.tag{font-size:.78rem;color:var(--gold);border:1px solid var(--gold);border-radius:3px;padding:2px 9px;white-space:nowrap}
+.tools .panel>div{padding:22px}
+.tabs{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:18px}
+.tp[hidden]{display:none}
+textarea,input.f{width:100%;background:var(--bg);color:var(--ink);border:1px solid var(--line);border-radius:3px;padding:12px;font:.9rem "JetBrains Mono",monospace;resize:vertical}
+textarea:focus,input.f:focus{border-color:var(--cy)}
+.hl{display:grid;grid-template-columns:76px 1fr;gap:6px 12px;margin-top:14px;font-size:.8rem}
+.hl span{color:var(--gold)}.hl code{word-break:break-all;color:var(--ink)}
+.meter{height:6px;background:var(--s2);margin:14px 0 8px;border-radius:3px;overflow:hidden}
+.meter i{display:block;height:100%;width:0;background:#e5484d;transition:width .25s}
+.meter[data-l="2"] i{background:var(--gold)}.meter[data-l="3"] i{background:#46c27a}.meter[data-l="4"] i{background:var(--cy)}
+.note{color:var(--mute);font-size:.85rem;margin:12px 0 0}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:36px}
+h3.g{font-size:1rem;color:var(--gold);margin-bottom:10px}
+.ul{list-style:none;padding:0;margin:0}.ul li{padding:5px 0;border-bottom:1px solid var(--line)}
+.ul span{display:block;color:var(--mute);font-size:.84rem}
+.sk{display:flex;flex-wrap:wrap;gap:8px}.sk span{background:var(--s2);border:1px solid var(--line);border-radius:3px;padding:4px 11px;font-size:.88rem}
+footer{border-top:1px solid var(--line);padding:28px 0 40px;color:var(--mute);font-size:.9rem}
+footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;align-items:center}
+@media (max-width:860px){.hero .wrap{grid-template-columns:1fr}.proj{grid-template-columns:1fr}.hero{padding-top:44px}}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.meter i{transition:none}}
+</style>
+</head>
+<body>
+<nav class="nav" aria-label="Main">
+<b>MA</b>
+<a href="#projects">Projects</a><a href="#tools">Toolbox</a><a href="#skills">Skills</a><a href="#certs">Certificates</a><a href="#contact">Contact</a>
+<button id="theme" type="button">Light / Dark</button>
+</nav>
+<header class="hero"><div class="wrap">
+<div>
+<div class="gold"></div>
+<h1>Mohamed Abdelrazek</h1>
+<p class="sub">Cybersecurity student at El Sewedy University of Technology. I build forensics and recon tools, web apps, and detection models.</p>
+<div class="row">
+<a class="btn p" href="#projects">View projects</a>
+<a class="btn" href="#tools">Try the toolbox</a>
+<a class="btn" href="https://github.com/MoNoahSEC">GitHub</a>
+<a class="btn" href="https://www.linkedin.com/in/mohamed-abdelrazek-b08aaa446">LinkedIn</a>
+<button class="btn cpy" type="button">Copy email</button>
+</div>
+</div>
+<div class="panel"><div class="term mono">
+<div class="bar">mohamed@portfolio ~ type help</div>
+<div id="out" aria-live="polite"></div>
+<form id="tf"><span class="k" style="color:var(--cy)">$</span><input id="ti" autocomplete="off" spellcheck="false" aria-label="Terminal command" placeholder="help"></form>
+</div></div>
+</div></header>
+
+<main class="wrap">
+<section id="projects" style="border-top:0">
+<h2>Projects</h2>
+<p class="lead">Security tooling, a computer vision model, and production web work.</p>
+<div class="flt" role="group" aria-label="Filter projects">
+<button type="button" data-f="all" aria-pressed="true">All</button><button type="button" data-f="Security" aria-pressed="false">Security</button><button type="button" data-f="AI" aria-pressed="false">AI</button><button type="button" data-f="Web" aria-pressed="false">Web</button>
+</div>
+<div class="proj" data-t="Security"><div><h3>Web Server Forensic Investigation Engine</h3><p class="stack mono">Python, Bash, ELK Stack, ModSecurity</p></div><ul><li>Ingests raw web server logs and maps threats to MITRE ATT&amp;CK techniques.</li><li>Isolates SQL injection, XSS, and brute-force attacks, then blocks them with custom WAF rules.</li></ul><span class="tag">Security</span></div>
+<div class="proj" data-t="Security"><div><h3>RapidRecon Pro</h3><p class="stack mono">Python, Bash, network protocols</p></div><ul><li>Automates subdomain discovery and deep port scanning in one workflow.</li><li>Generates structured HTML penetration-testing reports of every active service found.</li></ul><span class="tag">Security</span></div>
+<div class="proj" data-t="AI"><div><h3>Industrial Defect Detection</h3><p class="stack mono">Python, YOLOv8/v11, NVIDIA GPU</p></div><ul><li>Fine-tuned detectors for automated quality control and fracture detection.</li><li>Reached 0.985 mAP50 after 89 epochs.</li></ul><span class="tag">AI</span></div>
+<div class="proj" data-t="Web"><div><h3>Al-Masriya Factory Management</h3><p class="stack mono">PHP, SQL</p></div><ul><li>Co-developed a multi-version app for inventory tracking and worker attendance.</li><li>Built shift-management logic and injection-resistant database structures.</li></ul><span class="tag">Web</span></div>
+<div class="proj" data-t="Security"><div><h3>Real-Time Linux Monitoring Dashboard</h3><p class="stack mono">Bash, shell scripting</p></div><ul><li>Tracks CPU, RAM, and network health live, logging to sysmon.log to cut diagnostic time.</li></ul><span class="tag">Security</span></div>
+<div class="row" style="margin-top:8px"><a class="btn" href="https://github.com/MoNoahSEC">See all repositories on GitHub</a></div>
+</section>
+
+<section id="tools" class="tools">
+<h2>Security toolbox</h2>
+<p class="lead">Small defensive utilities that run in your browser. Nothing you type leaves this page.</p>
+<div class="panel"><div>
+<div class="tabs" role="tablist">
+<button type="button" role="tab" data-tab="hash" aria-selected="true">Hash generator</button><button type="button" role="tab" data-tab="enc" aria-selected="false">Encode and decode</button><button type="button" role="tab" data-tab="pw" aria-selected="false">Password strength</button>
+</div>
+<div class="tp" id="hash">
+<textarea id="hin" rows="3" aria-label="Text to hash" placeholder="Type text to hash"></textarea>
+<div class="hl mono"><span>SHA-1</span><code id="h1">-</code><span>SHA-256</span><code id="h2">-</code><span>SHA-512</span><code id="h5">-</code></div>
+<div class="row" style="margin-top:14px"><button class="btn" type="button" id="hc">Copy SHA-256</button></div>
+</div>
+<div class="tp" id="enc" hidden>
+<textarea id="ein" rows="3" aria-label="Input" placeholder="Input text"></textarea>
+<div class="row" style="margin:12px 0"><button class="btn" type="button" data-e="b64e">Base64 encode</button><button class="btn" type="button" data-e="b64d">Base64 decode</button><button class="btn" type="button" data-e="ue">URL encode</button><button class="btn" type="button" data-e="ud">URL decode</button></div>
+<textarea id="eout" rows="3" aria-label="Output" readonly placeholder="Output"></textarea>
+</div>
+<div class="tp" id="pw" hidden>
+<div class="row"><input class="f" id="pin" type="password" autocomplete="off" aria-label="Password to test" placeholder="Type a password to test" style="flex:1;min-width:200px"><button class="btn" type="button" id="pv">Show</button></div>
+<div class="meter" id="pm" data-l="0"><i id="pb"></i></div>
+<div id="pt" class="mono" style="font-size:.88rem">Start typing to see an estimate.</div>
+</div>
+<p class="note">Rough educational estimates only. Don’t paste real passwords into any website.</p>
+</div></div>
+</section>
+
+<section id="skills">
+<h2>Skills</h2>
+<div class="grid">
+<div><h3 class="g">Programming</h3><div class="sk"><span>Python</span><span>PHP / Laravel</span><span>Java</span><span>Bash</span><span>SQL</span></div></div>
+<div><h3 class="g">Security</h3><div class="sk"><span>Log forensics</span><span>MITRE ATT&amp;CK</span><span>ModSecurity WAF</span><span>Recon and scanning</span><span>Kali Linux</span></div></div>
+<div><h3 class="g">AI and automation</h3><div class="sk"><span>YOLOv8/v11</span><span>Claude API</span><span>MCP</span><span>Claude Code</span><span>Cursor</span><span>n8n</span></div></div>
+<div><h3 class="g">Infrastructure</h3><div class="sk"><span>Docker</span><span>ELK Stack</span><span>Supabase</span><span>Git</span><span>Packet Tracer</span><span>Linux</span></div></div>
+</div>
+</section>
+
+<section id="certs">
+<h2>Certificates</h2>
+<div class="grid" style="margin-top:22px">
+<div><h3 class="g">Anthropic Education, August 2026</h3><ul class="ul"><li>Claude with the Anthropic API</li><li>Claude Code 101</li><li>Introduction to Model Context Protocol</li><li>Claude with Amazon Bedrock</li></ul></div>
+<div><h3 class="g">Cybersecurity and networking</h3><ul class="ul">
+<li>Cyber Security, 20 hours<span>The British University in Egypt, August 2026</span></li>
+<li>Network Addressing and Basic Troubleshooting<span>Cisco Networking Academy and SUT, May 2026</span></li>
+<li>Cyber Threat Management<span>Cisco Networking Academy, April 2026</span></li>
+<li>Introduction to Cybersecurity<span>Cisco Networking Academy</span></li>
+<li>Getting Started with Cisco Packet Tracer<span>Cisco Networking Academy and SUT</span></li>
+<li>Cybersecurity Professional Training<span>El Sewedy Electric</span></li>
+</ul></div>
+</div>
+</section>
+
+<section id="contact">
+<h2>Let’s work together</h2>
+<p class="lead">Open to internships and remote work in cybersecurity, web development, and AI model training and evaluation.</p>
+<div class="row">
+<a class="btn p" href="mailto:m.abdelrazzeek@gmail.com">Send an email</a>
+<button class="btn cpy" type="button">Copy email</button>
+<a class="btn" href="https://www.linkedin.com/in/mohamed-abdelrazek-b08aaa446">LinkedIn</a>
+<a class="btn" href="https://github.com/MoNoahSEC">GitHub</a>
+</div>
+<p class="note">Mansoura, Egypt. Arabic (native), English, German (A1).</p>
+</section>
+</main>
+<footer><div class="wrap"><span>© 2026 Mohamed Abdelrazek</span><a class="btn" href="#top" onclick="window.scrollTo({top:0});return false">Back to top</a></div></footer>
+
+<script>
+const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)],EM="m.abdelrazzeek@gmail.com";
+$("#theme").onclick=()=>{const r=document.documentElement,cur=r.dataset.theme||(matchMedia("(prefers-color-scheme: light)").matches?"light":"dark");r.dataset.theme=cur==="light"?"dark":"light"};
+async function copy(t){try{await navigator.clipboard.writeText(t);return true}catch(e){const a=document.createElement("textarea");a.value=t;document.body.appendChild(a);a.select();let ok=false;try{ok=document.execCommand("copy")}catch(e){}a.remove();return ok}}
+$$(".cpy").forEach(b=>b.onclick=async()=>{const o=b.textContent,ok=await copy(EM);b.textContent=ok?"Copied":EM;setTimeout(()=>b.textContent=o,1800)});
+$$(".flt button").forEach(b=>b.onclick=()=>{$$(".flt button").forEach(x=>x.setAttribute("aria-pressed",x===b));$$(".proj").forEach(p=>p.hidden=b.dataset.f!=="all"&&p.dataset.t!==b.dataset.f)});
+$$(".tabs button").forEach(b=>b.onclick=()=>{$$(".tabs button").forEach(x=>x.setAttribute("aria-selected",x===b));$$(".tp").forEach(p=>p.hidden=p.id!==b.dataset.tab)});
+const hex=b=>[...new Uint8Array(b)].map(x=>x.toString(16).padStart(2,"0")).join("");
+let h256="";
+$("#hin").oninput=async e=>{const v=e.target.value;if(!v){["h1","h2","h5"].forEach(i=>$("#"+i).textContent="-");h256="";return}
+const d=new TextEncoder().encode(v),f=async a=>hex(await crypto.subtle.digest(a,d));
+$("#h1").textContent=await f("SHA-1");h256=await f("SHA-256");$("#h2").textContent=h256;$("#h5").textContent=await f("SHA-512")};
+$("#hc").onclick=async e=>{if(!h256)return;const ok=await copy(h256),o=e.target.textContent;e.target.textContent=ok?"Copied":"Select and copy manually";setTimeout(()=>e.target.textContent=o,1800)};
+$$("[data-e]").forEach(b=>b.onclick=()=>{const v=$("#ein").value,o=$("#eout");try{o.value={b64e:()=>btoa(unescape(encodeURIComponent(v))),b64d:()=>decodeURIComponent(escape(atob(v.trim()))),ue:()=>encodeURIComponent(v),ud:()=>decodeURIComponent(v)}[b.dataset.e]()}catch(e){o.value="Invalid input for this operation."}});
+$("#pv").onclick=e=>{const i=$("#pin"),s=i.type==="password";i.type=s?"text":"password";e.target.textContent=s?"Hide":"Show"};
+$("#pin").oninput=e=>{const v=e.target.value;if(!v){$("#pb").style.width="0";$("#pm").dataset.l=0;$("#pt").textContent="Start typing to see an estimate.";return}
+let pool=0;if(/[a-z]/.test(v))pool+=26;if(/[A-Z]/.test(v))pool+=26;if(/\d/.test(v))pool+=10;if(/[^A-Za-z0-9]/.test(v))pool+=32;
+let bits=v.length*Math.log2(pool);if(/(.)\1{2,}/.test(v))bits*=.8;if(/(password|qwerty|123456|admin|letmein|welcome)/i.test(v))bits=Math.min(bits,20);
+const l=bits<28?1:bits<45?2:bits<60?3:4,n=["","Weak","Fair","Good","Strong"][l];
+$("#pb").style.width=Math.min(100,bits/80*100)+"%";$("#pm").dataset.l=l;
+$("#pt").textContent=n+" — about "+Math.round(bits)+" bits. "+(v.length<12?"Use at least 12 characters. ":"")+(pool<62?"Mix letters, digits and symbols.":"")};
+const out=$("#out"),C={
+help:"commands: whoami, skills, projects, certs, contact, clear",
+whoami:"Mohamed Abdelrazek\ncybersecurity student, B.Tech at SUT (May 2028)\nbuilds security tools, web apps and detection models",
+skills:"python  php/laravel  java  bash  sql\nkali  docker  elk  modsecurity\nyolov8/v11  claude-api  mcp  n8n",
+projects:"forensic-engine   log analysis to MITRE ATT&CK\nrapidrecon-pro    recon and reporting\ndefect-detection  YOLO, 0.985 mAP50\nal-masriya-app    PHP/SQL inventory system\nsysmon-dashboard  Bash monitoring",
+certs:"4 x Anthropic Education\n6 x cybersecurity and networking",
+contact:EM+"\ngithub.com/MoNoahSEC\nlinkedin.com/in/mohamed-abdelrazek-b08aaa446"};
+function say(cmd,txt){out.innerHTML="";}
+function line(t,c){const d=document.createElement("div");if(c)d.className=c;d.textContent=t;out.appendChild(d);out.scrollTop=out.scrollHeight}
+function run(c){line("$ "+c,"k");if(c==="clear"){out.innerHTML="";return}line(C[c]||("command not found: "+c+". Type help."));line("")}
+run("whoami");
+$("#tf").onsubmit=e=>{e.preventDefault();const v=$("#ti").value.trim().toLowerCase();$("#ti").value="";if(v)run(v)};
+</script>
+</body>
+</html>
